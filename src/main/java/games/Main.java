@@ -31,7 +31,7 @@ public class Main {
       c.buildBoard();
       c.printBoard();
 
-      while (game < 4) {
+      while (game == 0) {
         if (playerNumber == 1) {
           System.out.println(
               "Player 1, add a piece to the board by typing in which column you would like to add a piece.");
@@ -47,8 +47,7 @@ public class Main {
           c.printBoard();
           playerNumber = 1;
         }
-        game++;
-        // game = c.checkWinner();
+        game = c.checkWinner();
       }
 
       if (game == 1) {
