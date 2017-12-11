@@ -28,13 +28,12 @@ public class Main {
       ConnectFour c = new ConnectFour();
       c.buildBoard();
       c.printBoard();
-      // System.out.println(
-      //     "Player 1, add a piece to the board by typing in which column you would like to add a
-      // piece.");
-      // playerNumber = 1;
-      // col = input.nextInt();
-      // c.update(col, playerNumber);
-      // c.printBoard();
+      System.out.println(
+          "Player 1, add a piece to the board by typing in which column you would like to add a piece.");
+      playerNumber = 1;
+      col = input.nextInt();
+      c.update(col, playerNumber);
+      c.printBoard();
     } else if (!gameType) {
       // word scramble game begins
       WordScramble w = new WordScramble();
