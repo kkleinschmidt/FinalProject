@@ -59,152 +59,6 @@ public class ConnectFour {
     return board;
   }
 
-  // adds a piece to a column
-  public void updateColumn(int col, String item) {
-    Stack<String> temp = new Stack<String>();
-    int placement = -1;
-
-    if (col == 1) {
-      placement = column1.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co1 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co1--;
-      board.replace(1, temp);
-
-    } else if (col == 2) {
-
-      placement = column2.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co2 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co2--;
-      board.replace(2, temp);
-
-    } else if (col == 3) {
-
-      placement = column3.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co3 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co3--;
-      board.replace(3, temp);
-
-    } else if (col == 4) {
-
-      placement = column4.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co4 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co4--;
-      board.replace(4, temp);
-
-    } else if (col == 5) {
-
-      placement = column5.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co5 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co5--;
-      board.replace(5, temp);
-
-    } else if (col == 6) {
-
-      placement = column6.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co6 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co6--;
-      board.replace(6, temp);
-
-    } else if (col == 7) {
-
-      placement = column7.search(item);
-
-      if (placement == -1) {
-        temp.push("item");
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
-      } else {
-        for (int i = placement; i < co7 + 1; i++) {
-          temp.push("item");
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
-      }
-      co7--;
-      board.replace(7, temp);
-    }
-  }
-
   // prints the game board out
   public void printBoard() {
     System.out.println("---------------");
@@ -212,16 +66,11 @@ public class ConnectFour {
     System.out.println("---------------");
     Stack<String> x = new Stack<String>();
     for (int j = 0; j < 6; j++){
-      for (int i = 1; i < board.size() + 1; i++) {
-        String temp = board.get(i).pop();
-        x.push(temp);
+      for (int i = 1; i < 8; i++) {
+        System.out.print("|" + board.get(i).pop());
       }
-    }
-      
-    for (int i = 0; i < 6; i++){
-      System.out.println(
-          "|" + x.pop() + "|" + x.pop() + "|" + x.pop() + "|" + x.pop() + "|" + x.pop() + "|"
-              + x.pop() + "|" + x.pop() + "|");
+      System.out.print("|");
+      System.out.println();
     }
     
     System.out.println("---------------");
@@ -235,6 +84,152 @@ public class ConnectFour {
       updateColumn(c, "x");
     } else if (p == 2) {
       updateColumn(c, "o");
+    }
+  }
+
+  // adds a piece to a column
+  public void updateColumn(int col, String item) {
+    Stack<String> temp = new Stack<String>();
+    int placement = -1;
+
+    if (col == 1) {
+      placement = column1.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co1 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co1--;
+      board.replace(1, temp);
+
+    } else if (col == 2) {
+
+      placement = column2.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co2 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co2--;
+      board.replace(2, temp);
+
+    } else if (col == 3) {
+
+      placement = column3.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co3 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co3--;
+      board.replace(3, temp);
+
+    } else if (col == 4) {
+
+      placement = column4.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co4 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co4--;
+      board.replace(4, temp);
+
+    } else if (col == 5) {
+
+      placement = column5.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co5 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co5--;
+      board.replace(5, temp);
+
+    } else if (col == 6) {
+
+      placement = column6.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co6 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co6--;
+      board.replace(6, temp);
+
+    } else if (col == 7) {
+
+      placement = column7.search(item);
+
+      if (placement == -1) {
+        temp.push(item);
+        for (int i = 0; i < 5; i++) {
+          temp.push(" ");
+        }
+      } else {
+        for (int i = placement; i < co7 + 1; i++) {
+          temp.push(item);
+        }
+        for (int i = 0; i < placement; i++) {
+          temp.push(" ");
+        }
+      }
+      co7--;
+      board.replace(7, temp);
     }
   }
 
