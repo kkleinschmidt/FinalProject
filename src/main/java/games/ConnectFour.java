@@ -5,49 +5,57 @@ import java.util.*;
 public class ConnectFour {
 
   // important variables
-  int round = 0;
+  int countPlayer1 = 0;
+  int countPlayer2 = 0;
 
-  // column empty space counters
-  int co1 = 6;
-  int co2 = 6;
-  int co3 = 6;
-  int co4 = 6;
-  int co5 = 6;
-  int co6 = 6;
-  int co7 = 6;
+  // column empty space index counters
+  int co1 = 5;
+  int co2 = 5;
+  int co3 = 5;
+  int co4 = 5;
+  int co5 = 5;
+  int co6 = 5;
+  int co7 = 5;
 
   // data structures
-  HashMap<Integer, Stack<String>> board;
-  Stack<String> column1 = new Stack<String>();
-  Stack<String> column2 = new Stack<String>();
-  Stack<String> column3 = new Stack<String>();
-  Stack<String> column4 = new Stack<String>();
-  Stack<String> column5 = new Stack<String>();
-  Stack<String> column6 = new Stack<String>();
-  Stack<String> column7 = new Stack<String>();
+  HashMap<Integer, List<String>> board;
+
+  List<String> column1 = new ArrayList<String>();
+  List<String> column2 = new ArrayList<String>();
+  List<String> column3 = new ArrayList<String>();
+  List<String> column4 = new ArrayList<String>();
+  List<String> column5 = new ArrayList<String>();
+  List<String> column6 = new ArrayList<String>();
+  List<String> column7 = new ArrayList<String>();
+
+  List<String> row1 = new ArrayList<String>();
+  List<String> row2 = new ArrayList<String>();
+  List<String> row3 = new ArrayList<String>();
+  List<String> row4 = new ArrayList<String>();
+  List<String> row5 = new ArrayList<String>();
+  List<String> row6 = new ArrayList<String>();
 
   // initialize
   public ConnectFour() {
-    board = new HashMap<Integer, Stack<String>>();
+    board = new HashMap<Integer, List<String>>();
     initColumn();
   }
 
   // fills the empty columns with blanks
   public void initColumn() {
     for (int i = 0; i < 6; i++) {
-      column1.push(" ");
-      column2.push(" ");
-      column3.push(" ");
-      column4.push(" ");
-      column5.push(" ");
-      column6.push(" ");
-      column7.push(" ");
+      column1.add(" ");
+      column2.add(" ");
+      column3.add(" ");
+      column4.add(" ");
+      column5.add(" ");
+      column6.add(" ");
+      column7.add(" ");
     }
   }
 
   // fills out the HashMap
-  public HashMap<Integer, Stack<String>> buildBoard() {
-    initColumn();
+  public void buildBoard() {
     board.put(1, column1);
     board.put(2, column2);
     board.put(3, column3);
@@ -55,8 +63,6 @@ public class ConnectFour {
     board.put(5, column5);
     board.put(6, column6);
     board.put(7, column7);
-
-    return board;
   }
 
   // prints the game board out
@@ -64,20 +70,20 @@ public class ConnectFour {
     System.out.println("---------------");
     System.out.println("|1|2|3|4|5|6|7|");
     System.out.println("---------------");
-    Stack<String> x = new Stack<String>();
-    for (int j = 0; j < 6; j++){
-      for (int i = 1; i < 8; i++) {
-        System.out.print("|" + board.get(i).pop());
+    List<String> x = new ArrayList<String>();
+    for (int i = 0; i < 6; i++) {
+      for (int j = 1; j < 8; j++) {
+        System.out.print("|" + board.get(j).get(i));
       }
       System.out.print("|");
       System.out.println();
     }
-    
+
     System.out.println("---------------");
   }
 
+  // updates the board depending on the player
   public void update(int c, int p) {
-    buildBoard();
     if (p == 0) {
       updateColumn(randomCol(), "o");
     } else if (p == 1) {
@@ -87,153 +93,338 @@ public class ConnectFour {
     }
   }
 
+  public int checkWinner() {
+    columnAndRow();
+
+    int colCount1_1 = 0;
+    int colCount2_1 = 0;
+    int colCount1_2 = 0;
+    int colCount2_2 = 0;
+    int colCount1_3 = 0;
+    int colCount2_3 = 0;
+    int colCount1_4 = 0;
+    int colCount2_4 = 0;
+    int colCount1_5 = 0;
+    int colCount2_5 = 0;
+    int colCount1_6 = 0;
+    int colCount2_6 = 0;
+    int colCount1_7 = 0;
+    int colCount2_7 = 0;
+
+    for (int i = 0; i < 6; i++) {
+      String p1 = column1.get(i);
+      String p2 = column2.get(i);
+      String p3 = column3.get(i);
+      String p4 = column4.get(i);
+      String p5 = column5.get(i);
+      String p6 = column6.get(i);
+      String p7 = column7.get(i);
+
+      if (p1 == "x") {
+        colCount1_1++;
+      } else if (p1 == "o") {
+        colCount2_1++;
+      }
+
+      if (p2 == "x") {
+        colCount1_2++;
+      } else if (p2 == "o") {
+        colCount2_2++;
+      }
+
+      if (p3 == "x") {
+        colCount1_3++;
+      } else if (p3 == "o") {
+        colCount2_3++;
+      }
+
+      if (p4 == "x") {
+        colCount1_4++;
+      } else if (p4 == "o") {
+        colCount2_4++;
+      }
+
+      if (p5 == "x") {
+        colCount1_5++;
+      } else if (p5 == "o") {
+        colCount2_5++;
+      }
+
+      if (p6 == "x") {
+        colCount1_6++;
+      } else if (p6 == "o") {
+        colCount2_6++;
+      }
+
+      if (p7 == "x") {
+        colCount1_7++;
+      } else if (p7 == "o") {
+        colCount2_7++;
+      }
+    }
+
+    if (colCount1_1 == 4
+        || colCount1_2 == 4
+        || colCount1_3 == 4
+        || colCount1_4 == 4
+        || colCount1_5 == 4
+        || colCount1_6 == 4
+        || colCount1_7 == 4) {
+      return 1;
+    } else if (colCount2_1 == 4
+        || colCount2_2 == 4
+        || colCount2_3 == 4
+        || colCount2_4 == 4
+        || colCount2_5 == 4
+        || colCount2_6 == 4
+        || colCount2_7 == 4) {
+      return 2;
+    }
+
+    int rowCount1_1 = 0;
+    int rowCount2_1 = 0;
+    int rowCount1_2 = 0;
+    int rowCount2_2 = 0;
+    int rowCount1_3 = 0;
+    int rowCount2_3 = 0;
+    int rowCount1_4 = 0;
+    int rowCount2_4 = 0;
+    int rowCount1_5 = 0;
+    int rowCount2_5 = 0;
+    int rowCount1_6 = 0;
+    int rowCount2_6 = 0;
+
+    for (int i = 0; i < 7; i++) {
+      String p1 = row1.get(i);
+      String p2 = row2.get(i);
+      String p3 = row3.get(i);
+      String p4 = row4.get(i);
+      String p5 = row5.get(i);
+      String p6 = row6.get(i);
+
+      if (p1 == "x") {
+        rowCount1_1++;
+      } else if (p1 == "o") {
+        rowCount2_1++;
+      }
+
+      if (p2 == "x") {
+        rowCount1_2++;
+      } else if (p2 == "o") {
+        rowCount2_2++;
+      }
+
+      if (p3 == "x") {
+        rowCount1_3++;
+      } else if (p3 == "o") {
+        rowCount2_3++;
+      }
+
+      if (p4 == "x") {
+        rowCount1_4++;
+      } else if (p4 == "o") {
+        rowCount2_4++;
+      }
+
+      if (p5 == "x") {
+        rowCount1_5++;
+      } else if (p5 == "o") {
+        rowCount2_5++;
+      }
+
+      if (p6 == "x") {
+        rowCount1_6++;
+      } else if (p6 == "o") {
+        rowCount2_6++;
+      }
+    }
+
+    if (rowCount1_1 == 4
+        || rowCount1_2 == 4
+        || rowCount1_3 == 4
+        || rowCount1_4 == 4
+        || rowCount1_5 == 4
+        || rowCount1_6 == 4) {
+      return 1;
+    } else if (rowCount2_1 == 4
+        || rowCount2_2 == 4
+        || rowCount2_3 == 4
+        || rowCount2_4 == 4
+        || rowCount2_5 == 4
+        || rowCount2_6 == 4) {
+      return 2;
+    }
+
+    return 0;
+  }
+
   // adds a piece to a column
   public void updateColumn(int col, String item) {
-    Stack<String> temp = new Stack<String>();
-    int placement = -1;
+
+    int placement1 = -1;
+    int placement2 = -1;
 
     if (col == 1) {
-      placement = column1.search(item);
+      placement1 = column1.indexOf("x");
+      placement2 = column1.indexOf("o");
 
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column1.set(co1, item);
       } else {
-        for (int i = placement; i < co1 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column1.set(co1, item);
       }
+
       co1--;
-      board.replace(1, temp);
+      buildBoard();
 
     } else if (col == 2) {
+      placement1 = column2.indexOf("x");
+      placement2 = column2.indexOf("o");
 
-      placement = column2.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column2.set(co2, item);
       } else {
-        for (int i = placement; i < co2 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column2.set(co2, item);
       }
+
       co2--;
-      board.replace(2, temp);
+      buildBoard();
 
     } else if (col == 3) {
+      placement1 = column3.indexOf("x");
+      placement2 = column3.indexOf("o");
 
-      placement = column3.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column3.set(co3, item);
       } else {
-        for (int i = placement; i < co3 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column3.set(co3, item);
       }
+
       co3--;
-      board.replace(3, temp);
+      buildBoard();
 
     } else if (col == 4) {
+      placement1 = column4.indexOf("x");
+      placement2 = column4.indexOf("o");
 
-      placement = column4.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column4.set(co4, item);
       } else {
-        for (int i = placement; i < co4 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column4.set(co4, item);
       }
+
       co4--;
-      board.replace(4, temp);
+      buildBoard();
 
     } else if (col == 5) {
+      placement1 = column5.indexOf("x");
+      placement2 = column5.indexOf("o");
 
-      placement = column5.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column5.set(co5, item);
       } else {
-        for (int i = placement; i < co5 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column5.set(co5, item);
       }
+
       co5--;
-      board.replace(5, temp);
+      buildBoard();
 
     } else if (col == 6) {
+      placement1 = column6.indexOf("x");
+      placement2 = column6.indexOf("o");
 
-      placement = column6.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column6.set(co6, item);
       } else {
-        for (int i = placement; i < co6 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column6.set(co6, item);
       }
+
       co6--;
-      board.replace(6, temp);
+      buildBoard();
 
     } else if (col == 7) {
+      placement1 = column7.indexOf("x");
+      placement2 = column7.indexOf("o");
 
-      placement = column7.search(item);
-
-      if (placement == -1) {
-        temp.push(item);
-        for (int i = 0; i < 5; i++) {
-          temp.push(" ");
-        }
+      if (placement1 == -1 && placement2 == -1) {
+        column7.set(co7, item);
       } else {
-        for (int i = placement; i < co7 + 1; i++) {
-          temp.push(item);
-        }
-        for (int i = 0; i < placement; i++) {
-          temp.push(" ");
-        }
+        column7.set(co7, item);
       }
+
       co7--;
-      board.replace(7, temp);
+      buildBoard();
     }
   }
 
-  public Integer randomCol() {
+  public void columnAndRow() {
+
+    column1.addAll(board.get(1));
+    column2.addAll(board.get(2));
+    column3.addAll(board.get(3));
+    column4.addAll(board.get(4));
+    column5.addAll(board.get(5));
+    column6.addAll(board.get(6));
+    column7.addAll(board.get(7));
+
+    row1.add(column1.get(0));
+    row1.add(column2.get(0));
+    row1.add(column3.get(0));
+    row1.add(column4.get(0));
+    row1.add(column5.get(0));
+    row1.add(column6.get(0));
+    row1.add(column7.get(0));
+
+    row2.add(column1.get(1));
+    row2.add(column2.get(1));
+    row2.add(column3.get(1));
+    row2.add(column4.get(1));
+    row2.add(column5.get(1));
+    row2.add(column6.get(1));
+    row2.add(column7.get(1));
+
+    row3.add(column1.get(2));
+    row3.add(column2.get(2));
+    row3.add(column3.get(2));
+    row3.add(column4.get(2));
+    row3.add(column5.get(2));
+    row3.add(column6.get(2));
+    row3.add(column7.get(2));
+
+    row4.add(column1.get(3));
+    row4.add(column2.get(3));
+    row4.add(column3.get(3));
+    row4.add(column4.get(3));
+    row4.add(column5.get(3));
+    row4.add(column6.get(3));
+    row4.add(column7.get(3));
+
+    row4.add(column1.get(4));
+    row4.add(column2.get(4));
+    row4.add(column3.get(4));
+    row4.add(column4.get(4));
+    row4.add(column5.get(4));
+    row4.add(column6.get(4));
+    row4.add(column7.get(4));
+
+    row5.add(column1.get(5));
+    row5.add(column2.get(5));
+    row5.add(column3.get(5));
+    row5.add(column4.get(5));
+    row5.add(column5.get(5));
+    row5.add(column6.get(5));
+    row5.add(column7.get(5));
+
+    row6.add(column1.get(6));
+    row6.add(column2.get(6));
+    row6.add(column3.get(6));
+    row6.add(column4.get(6));
+    row6.add(column5.get(6));
+    row6.add(column6.get(6));
+    row6.add(column7.get(6));
+  }
+
+  public int randomCol() {
     return 1; // temporary
   }
 }
