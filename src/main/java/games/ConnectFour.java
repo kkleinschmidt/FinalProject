@@ -98,9 +98,9 @@ public class ConnectFour {
     boolean oh = checkOHorizontal();
     boolean ov = checkOVertical();
 
-    if (xh == true || xv == true) {
+    if (xh == false || xv == false) {
       return 1;
-    } else if (oh == true || ov == true) {
+    } else if (oh == false || ov == false) {
       return 2;
     } else {
       return 0;
@@ -112,21 +112,18 @@ public class ConnectFour {
     boolean flag = true;
 
     int counter = 0;
-    while (flag) {
-
-      for (int w = 1; w < 8; w++) {
-        for (int h = 0; h < 6; h++) {
-          if (board.get(w).get(h) == "x") {
-            counter++;
-          } else {
-            counter = 0;
-          }
-          if (counter >= 4 || counter <= 4) {
-            flag = false;
-          }
+    for (int w = 1; w < 8; w++) {
+      for (int h = 0; h < 6; h++) {
+        if (board.get(w).get(h) == "x") {
+          counter++;
+        } else {
+          counter = 0;
+        }
+        if (counter >= 4) {
+          flag = false;
+          break;
         }
       }
-      break;
     }
     return flag;
   }
@@ -136,21 +133,19 @@ public class ConnectFour {
     boolean flag = true;
 
     int counter = 0;
-    while (flag) {
 
-      for (int h = 0; h < 6; h++) {
-        for (int w = 1; w < 8; w++) {
-          if (board.get(w).get(h) == "x") {
-            counter++;
-          } else {
-            counter = 0;
-          }
-          if (counter >= 4 || counter <= 4) {
-            flag = false;
-          }
+    for (int h = 0; h < 6; h++) {
+      for (int w = 1; w < 8; w++) {
+        if (board.get(w).get(h) == "x") {
+          counter++;
+        } else {
+          counter = 0;
+        }
+        if (counter >= 4) {
+          flag = false;
+          break;
         }
       }
-      break;
     }
     return flag;
   }
@@ -160,21 +155,19 @@ public class ConnectFour {
     boolean flag = true;
 
     int counter = 0;
-    while (flag) {
 
-      for (int w = 1; w < 8; w++) {
-        for (int h = 0; h < 6; h++) {
-          if (board.get(w).get(h) == "o") {
-            counter++;
-          } else {
-            counter = 0;
-          }
-          if (counter >= 4 || counter <= 4) {
-            flag = false;
-          }
+    for (int w = 1; w < 8; w++) {
+      for (int h = 0; h < 6; h++) {
+        if (board.get(w).get(h) == "o") {
+          counter++;
+        } else {
+          counter = 0;
+        }
+        if (counter >= 4) {
+          flag = false;
+          break;
         }
       }
-      break;
     }
     return flag;
   }
@@ -184,21 +177,19 @@ public class ConnectFour {
     boolean flag = true;
 
     int counter = 0;
-    while (flag) {
 
-      for (int h = 0; h < 6; h++) {
-        for (int w = 1; w < 8; w++) {
-          if (board.get(w).get(h) == "o") {
-            counter++;
-          } else {
-            counter = 0;
-          }
-          if (counter >= 4 || counter <= 4) {
-            flag = false;
-          }
+    for (int h = 0; h < 6; h++) {
+      for (int w = 1; w < 8; w++) {
+        if (board.get(w).get(h) == "o") {
+          counter++;
+        } else {
+          counter = 0;
+        }
+        if (counter >= 4) {
+          flag = false;
+          break;
         }
       }
-      break;
     }
     return flag;
   }

@@ -11,5 +11,8 @@ public class WordScramble {
 
   public WordScramble() {
     words.add("first");
+    words.add("pumpkin");
+    words.add("christmas");
+    words.add("random");
   }
 }
