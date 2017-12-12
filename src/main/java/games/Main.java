@@ -7,22 +7,13 @@ public class Main {
 
   public static void main(final String[] args) throws InterruptedException {
 
-    boolean gameType = true; // stand-in for input right now
+    boolean gameType = true; // stand-in for game type input right now
     final Scanner input = new Scanner(System.in);
+
+    // connect 4 variables
     int col = 0;
-    int playerNumber = 1;
     int game = 0;
 
-    // CALL INPUT
-
-    // if(input == "no"){
-    //   gameType = false;
-    // } else if(input == "yes"){
-    //   gameType = true;
-    // } else{
-    //   System.out.println("Please answer yes or no:");
-    //   //CALL INPUT AGAIN
-    // }
     // connect 4
     if (gameType) {
 
@@ -32,20 +23,21 @@ public class Main {
       c.printBoard();
 
       while (game == 0) {
-        if (playerNumber == 1) {
+        int pn = c.getPlayerNumber();
+        if (pn == 1) {
           System.out.println(
-              "Player 1, add a piece to the board by typing in which column you would like to add a piece.");
+              "Player 1, add a piece to the board by typing in which number column you would like to add a piece.");
           col = input.nextInt();
-          c.update(col, playerNumber);
+          c.update(col);
           c.printBoard();
-          playerNumber = 2;
-        } else if (playerNumber == 2) {
+          c.updatePlayerNumber(pn);
+        } else if (pn == 2) {
           System.out.println(
-              "Player 2, add a piece to the board by typing in which column you would like to add a piece.");
+              "Player 2, add a piece to the board by typing in which number column you would like to add a piece.");
           col = input.nextInt();
-          c.update(col, playerNumber);
+          c.update(col);
           c.printBoard();
-          playerNumber = 1;
+          c.updatePlayerNumber(pn);
         }
         game = c.checkWinner();
       }
@@ -55,6 +47,7 @@ public class Main {
       } else if (game == 2) {
         System.out.println("Player 2 wins!");
       }
+
       // word scramble
     } else if (!gameType) {
 
