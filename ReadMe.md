@@ -1,4 +1,4 @@
-## Project Name: Connect 4
+## Project Name: Connect 4 and Word Scramble
 
 #### Members: 
 Kaili Kleinschmidt (kaili.annk3@gmail.com kkleinschmidt@luc.edu), Elie Murphy (ermur97@gmail.com emurphy12@luc.edu), Linette Maliakal (lmaliakal@luc.edu, lmaliakal21@gmail.com) 
