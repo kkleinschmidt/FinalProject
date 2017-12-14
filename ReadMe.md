@@ -1,4 +1,4 @@
-## Project Name: Connect 4
+## Project Name: Connect 4 and Word Scarmble
 
 #### Members: 
 Kaili Kleinschmidt (kaili.annk3@gmail.com kkleinschmidt@luc.edu), Elie Murphy (ermur97@gmail.com emurphy12@luc.edu), Linette Maliakal (lmaliakal@luc.edu, lmaliakal21@gmail.com) 
@@ -12,8 +12,7 @@ Connect 4. They will input the column they want their piece to fall in, and the 
 representation of the game grid until someone has four across, four down, four diagonally, or it's a draw. 
 Then, the terminal will print the result of the game. For Unscramble, the user will be provided a word in a list of 
 words that already exists that will be scrambled up. The player then has to unscramble the word given in however many 
-tries it will take. The player can also give its own word to eventually unscramble, and it will be added to the 
-pre-made list of words.
+tries it will take.
 
 #### Project Design:
 * language: Java
