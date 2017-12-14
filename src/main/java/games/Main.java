@@ -74,7 +74,6 @@ public class Main {
           System.out.println("You've guessed the correct word!");
           game = 1;
         } else if (!correctWord) {
-          // System.out.println("Sorry, that is not the correct word. Try guessing again!");
           System.out.println("Type in your unscrambled guess: ");
         }
         turns++;

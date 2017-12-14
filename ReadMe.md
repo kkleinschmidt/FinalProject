@@ -23,11 +23,3 @@ pre-made list of words to be selected from.
 * Code the input system and main class.
 * Code the updating game board.
 * Code the lists of each column.
-
-##### Notes
-
-Four Data Structures:
-1. `HashMap`, used to print out the connect 4 table in the terminal
-2. `Stacks`, used to keep track of where the tokens are in the columns of connect 4
-3. `ArrayList`, used to keep track of the words in the word scrambler
-4. `Search`, used to check if the word inputted hasn't been scrambled already

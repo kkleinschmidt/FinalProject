@@ -1,6 +1,6 @@
-src/main/java/games/Main.java,1513234939000000000,2658,FORMATTED
-src/main/java/games/WordScramble.java,1513234529000000000,2004,FORMATTED
-src/main/java/games/ConnectFour.java,1513217200000000000,7148,FORMATTED
+src/main/java/games/Main.java,1513262891000000000,2569,FORMATTED
+src/main/java/games/WordScramble.java,1513262009000000000,2004,FORMATTED
+src/main/java/games/ConnectFour.java,1513262007000000000,7148,FORMATTED
 src/games/ConnectFour.java,1512873305000000000,2081,FORMATTED
 src/games/Main.java,1512860052000000000,773,FORMATTED
 src/games/WordScramble.java,1512860026000000000,199,FORMATTED
