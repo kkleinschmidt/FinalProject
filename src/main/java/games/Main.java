@@ -23,7 +23,7 @@ public class Main {
     String wordGuess;
     boolean gameOver = false;
     boolean correctWord = false;
-    int turns = 0;
+    int turns = 1;
 
     // connect 4
     if (gameType == 1) {
@@ -64,9 +64,10 @@ public class Main {
 
       // word scramble game begins
       WordScramble w = new WordScramble();
-
-      System.out.println("This is your word:  Type in your unscrambled guess.");
+      String theWord = w.scrambleWord();
+      System.out.println("This is your word: " + theWord + ". Type in your unscrambled guess.");
       wordGuess = input.nextLine();
+      correctWord = w.checkGuess(wordGuess);
 
       while (!gameOver) {
         turns++;
@@ -74,7 +75,7 @@ public class Main {
           System.out.println("Sorry, that is not the correct word. Try guessing again!");
           wordGuess = input.nextLine();
         }
-        // correctWord = w.checkGuess(wordGuess);
+        correctWord = w.checkGuess(wordGuess);
 
         if (correctWord) {
           System.out.println("You've guessed the correct word!");

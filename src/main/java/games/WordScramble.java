@@ -21,6 +21,7 @@ public class WordScramble {
   // important variables
   int round = 0;
   private Random random = new Random();
+  String unscrambledWord;
   ArrayList<String> words =
       new ArrayList<String>(
           Arrays.asList("random", "first", "pumpkin", "christmas", "library", "pedestrian"));
@@ -32,8 +33,9 @@ public class WordScramble {
     return myWord;
   }
 
-  public void scrambleWord() {
+  public String scrambleWord() {
     String word = randomWord(); // makes a random word
+    unscrambledWord = word;
     List<Character> temp = new ArrayList<Character>();
     for (char c : word.toCharArray()) { // adds each char of word into a list
       temp.add(c);
@@ -45,9 +47,15 @@ public class WordScramble {
       sb.append(c);
     }
     word = sb.toString();
+    return word; // returns scrambled word to print it in Main
   }
 
-  public void checkGuess(String wordUserInput) {
-    // return wordUserInput;
+  // checks to see if the guess is correct.
+  public boolean checkGuess(String wordUserInput) {
+    if (wordUserInput == unscrambledWord) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
