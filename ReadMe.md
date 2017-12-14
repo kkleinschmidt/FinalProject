@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-## Project Name: Connect 4 and Word Scarmble
-=======
 ## Project Name: Connect 4 and Word Unscramble
->>>>>>> bd9617b4c5020bb2e65e30cba0d74c5577522dc6
 
 #### Members: 
-Kaili Kleinschmidt (kaili.annk3@gmail.com kkleinschmidt@luc.edu), Elie Murphy (ermur97@gmail.com emurphy12@luc.edu), Linette Maliakal (lmaliakal@luc.edu, lmaliakal21@gmail.com) 
+Kaili Kleinschmidt (kaili.annk3@gmail.com kkleinschmidt@luc.edu), Elie Murphy (ermur97@gmail.com emurphy12@luc.edu), Linette Maliakal (lmaliakal@luc.edu, lmaliakal21@gmail.com)
 
 ##### Workflow: 
 Using Google Docs, a C9 workspace, Slack, and github, we will work together and collaborate on what we need to do. We’ll also meet up in person at least once a week on Thursdays. 

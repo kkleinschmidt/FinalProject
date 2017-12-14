@@ -13,6 +13,7 @@ When user wins, will tell number of tries it took (include overall guesses into 
 
 import java.util.*;
 import java.util.ArrayList;
+import java.util.Collections.*;
 import java.util.List;
 import java.util.Random;
 
@@ -20,14 +21,9 @@ public class WordScramble {
   // important variables
   int round = 0;
   private Random random = new Random();
-  ArrayList<String> words = new ArrayList<String>();
-
-  words.add("random")
-  words.add("first")
-  words.add("pumpkin");
-  words.add("christmas");
-  words.add("library");
-  words.add("pedestrian");
+  ArrayList<String> words =
+      new ArrayList<String>(
+          Arrays.asList("random", "first", "pumpkin", "christmas", "library", "pedestrian"));
 
   public String randomWord() {
     // method will choose word from ArrayList of words to be scrambled up later on
@@ -35,19 +31,23 @@ public class WordScramble {
     String myWord = words.get(indexWords);
     return myWord;
   }
-  
+
   public void scrambleWord() {
-    // takes in randomly picked word, separates into individ chars, scrambles chars around to form new "word" then returned to user
-    String w = randomWord(); // makes a random word
-    int wordLength = w.length; // takes the word's length in wordLength to be used to re-print the word in loops
-    for (int i = 0; i < wordLength; i++) {
-      char c = w.charAt(i);
-      // unless I do something like char x = w.charAt(i+1) etc. but then again we dont know length of word/how many variables needed
-      //System.out.print(c);
-    } 
+    String word = randomWord(); // makes a random word
+    List<Character> temp = new ArrayList<Character>();
+    for (char c : word.toCharArray()) { // adds each char of word into a list
+      temp.add(c);
+    }
+    Collections.shuffle(temp); // shuffles the list
+
+    StringBuilder sb = new StringBuilder(); // rebuilds the word
+    for (char c : temp) {
+      sb.append(c);
+    }
+    word = sb.toString();
   }
-  
+
   public void checkGuess(String wordUserInput) {
-    return wordUserInput;
+    // return wordUserInput;
   }
 }

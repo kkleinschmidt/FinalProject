@@ -18,8 +18,8 @@ public class Main {
     // connect 4 variables
     int col = 0;
     int game = 0;
-    
-    // word scramble variables 
+
+    // word scramble variables
     String wordGuess;
     boolean gameOver = false;
     boolean correctWord = false;
@@ -64,29 +64,33 @@ public class Main {
 
       // word scramble game begins
       WordScramble w = new WordScramble();
-      
+
+      System.out.println("This is your word:  Type in your unscrambled guess.");
+      wordGuess = input.nextLine();
+
       while (!gameOver) {
         turns++;
         if (!correctWord) {
           System.out.println("Sorry, that is not the correct word. Try guessing again!");
           wordGuess = input.nextLine();
         }
-        correctWord.checkGuess(wordGuess);
-      
+        // correctWord = w.checkGuess(wordGuess);
+
         if (correctWord) {
           System.out.println("You've guessed the correct word!");
+          gameOver = true;
         }
       }
-  
+
       System.out.println("Congrats! You won WordScramble in " + turns + " turns!");
-      
-    // quit game choosing
+
+      // quit game choosing
     } else if (gameType == 0) {
       System.exit(0);
-      
-    // invalid input
+
+      // invalid input
     } else {
-      System.out.println("Invalid game type.  Please type in either 1 or 2.");
+      System.out.println("Invalid game type. Please type in either 1 or 2.");
       gameType = input.nextInt();
     }
   }
