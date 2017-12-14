@@ -52,10 +52,6 @@ public class WordScramble {
 
   // checks to see if the guess is correct.
   public boolean checkGuess(String wordUserInput) {
-    if (wordUserInput == unscrambledWord) {
-      return true;
-    } else {
-      return false;
-    }
+    return unscrambledWord.equals(wordUserInput);
   }
 }
